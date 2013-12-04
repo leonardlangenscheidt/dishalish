@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<strong>Name:</strong>
+	<%= @restaurant.name %>
+</p>
+
+<p>
+	<strong>Address:</strong>
+	<%= @restaurant.address %>
+</p>
+
+<p>
+	<strong>Zip:</strong>
+	<%= @restaurant.zip %>
+</p>
+
+<p>
+	<strong>Cuisine:</strong>
+	<%= @restaurant.cuisine %>
+</p>
+
+<p>
+	<strong>Price:</strong>
+	<%= @restaurant.price %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
+
+<br><br>
+
+<h3>Dishes</h3>
+<table class="table table-striped">
+	<thead>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Description</th>
+		<th></th>
+		<th></th>
+	</thead>
+	<tbody>
+		<%@restaurant.dishes.each do |dish|%>
+			<tr>
+				<td><%=link_to dish.name, dish_path(dish)%></td>
+				<td><%=dish.price%></td>
+				<td><%=dish.description%></td>
+				<td><%=link_to 'Edit', edit_dish_path%></td>
+				<td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>
+<%= link_to 'New Dish', new_dish_path(:rest=>@restaurant.id)%></td>
+
+
+
+
